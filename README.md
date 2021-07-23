@@ -9,7 +9,7 @@ docker run -it --rm \
   -v "$PWD/backup:/backup" \
   --cap-drop=all \
   --user "$UID:$GID" \
-  morten/github-backup
+  ghcr.io/morten-olsen/github-backup
 ```
 _note: `--user` is not required, but recommended instead of running as root. Remember to give the user write access to the backup directory_
 
