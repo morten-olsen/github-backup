@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "lint": "docker run --rm -i hadolint/hadolint < Dockerfile",
     "start": "ts-node src/index.ts",
     "bundle": "ncc build src/index.ts -o dist"
   },
