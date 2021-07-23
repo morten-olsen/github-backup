@@ -1,6 +1,6 @@
 # Simple Github Backup
 
-A simple Github backup image, which will fetch a mirror backup of all repos from Github
+A simple Github backup image, which will fetch a mirror backup of all repos the user is associated with from Github
 
 ## Usage
 ```
