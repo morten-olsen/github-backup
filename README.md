@@ -13,6 +13,12 @@ docker run -it --rm \
 ```
 _note: `--user` is not required, but recommended instead of running as root. Remember to give the user write access to the backup directory_
 
+You can also limit which repositories to backup using the environment variabled `INCLUDE` and `EXCLUDE`, which supports a list or repos separated by `,` and with `*` as wildcard
+
+```
+-e INCLUDE="morten-olsen/*,morten-olsen-env/dotfiles" -e EXCLUDE="morten-olsen/something,*/test"
+```
+
 ## Backup structure
 ```
 |-{user1}

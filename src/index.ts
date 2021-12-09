@@ -3,16 +3,12 @@ import { Octokit } from '@octokit/rest';
 import simpleGit from 'simple-git';
 import fs from 'fs-extra';
 import path from 'path';
-import os from 'os';
-import rimrafSync from 'rimraf';
-import { nanoid } from 'nanoid';
-import util from 'util';
 import ora from 'ora';
-
-const rimraf = util.promisify(rimrafSync);
 
 const token = process.env.GITHUB_TOKEN;
 const backupLocation = process.env.GITHUB_BACKUP_LOCATION || '/backup';
+const included = (process.env.INCLUDE || '*/*').split(',');
+const excluded = (process.env.EXCLUDE || '').split(',');
 
 const mirror = async (target: string, repo: string) => {
   const authRemote = `https://foo:${token}@github.com/${repo}`
@@ -36,6 +32,22 @@ const mirror = async (target: string, repo: string) => {
   }
 };
 
+const shouldRun = (repoUser: string, repoName: string) => {
+  const isIncluded = included.reduce((result, current) => {
+    if (result) return result;
+    const [user = '*', repo = '*'] = current.split('/');
+    return (user === '*' || user === repoUser) && (repo === '*' || repo === repoName);
+  }, false)
+
+  const isExcluded = excluded.reduce((result, current) => {
+    if (result) return result;
+    const [user = '', repo = ''] = current.split('/');
+    return (user === '*' || user === repoUser) && (repo === '*' || repo === repoName);
+  }, false)
+
+  return isIncluded && !isExcluded;
+}
+
 const run = async () => {
   const github = new Octokit({
     auth: process.env.GITHUB_TOKEN,
@@ -45,6 +57,10 @@ const run = async () => {
   const errors: any[] = [];
   for await (const repos of github.paginate.iterator(action, { visibility: 'all' })) {
     for (const repo of repos.data) {
+      if (!shouldRun(repo.owner.login, repo.name)) {
+        console.log(`skipping ${repo.full_name}`)
+        continue;
+      }
       const loader = ora('preparing');
       loader.prefixText = repo.full_name;
       loader.start();
@@ -59,7 +75,7 @@ const run = async () => {
         await mirror(gitLocation, repo.full_name);
         loader.text = '';
         loader.succeed();
-      } catch (err) {
+      } catch (err: any) {
         loader.fail(err.toString());
         errors.push(err);
       }

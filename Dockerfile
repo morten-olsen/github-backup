@@ -1,7 +1,9 @@
-FROM node:alpine as BuildEnv
-COPY package.json /app/package.json
+FROM node:16-alpine as BuildEnv
+COPY package.json yarn.lock .yarnrc.yml /app/
 WORKDIR /app
-RUN yarn install
+RUN \
+  corepack enable && \
+  yarn install
 COPY . /app/
 RUN yarn bundle
 

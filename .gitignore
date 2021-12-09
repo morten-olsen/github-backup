@@ -2,3 +2,5 @@
 /*.log
 /.env
 /backup
+/.pnp.*
+/.yarn
