@@ -37,3 +37,6 @@ You can also limit which repositories to back up using the environment variables
 |  |  |  |-...
 ```
 
+## Scheduled
+
+If the container is started without a command it will run in scheduled mode. It will run every Sunday at 3 am. This can be overridden using `-e SCHEDULE="0 0 4 * * *"` (Runs at 4 am every day) using the cron time format

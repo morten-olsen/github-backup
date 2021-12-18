@@ -9,7 +9,7 @@ RUN yarn bundle
 
 FROM node:alpine
 COPY entry.sh /entry.sh
-RUN chmod 711 /entry.sh && apk update && apk add git
+RUN chmod 755 /entry.sh && apk update && apk add git
 COPY --from=BuildEnv /app/dist /app
 CMD ["schedule"]
 ENTRYPOINT ["/entry.sh"]
