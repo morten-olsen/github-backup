@@ -6,7 +6,7 @@ import path from 'path';
 import ora from 'ora';
 
 const token = process.env.GITHUB_TOKEN;
-const backupLocation = process.env.GITHUB_BACKUP_LOCATION || '/backup';
+const backupLocation = path.resolve(process.env.GITHUB_BACKUP_LOCATION || '/backup');
 const included = (process.env.INCLUDE || '*/*').split(',');
 const excluded = (process.env.EXCLUDE || '').split(',');
 
