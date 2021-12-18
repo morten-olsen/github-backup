@@ -1,6 +1,6 @@
-# Simple Github Backup
+# Simple GitHub Backup
 
-A simple Github backup image, which will fetch a mirror backup of all repos the user is associated with from Github
+A simple GitHub backup image, which will fetch a mirror backup of all repos the user is associated with from GitHub
 
 ## Usage
 ```
@@ -9,11 +9,11 @@ docker run -it --rm \
   -v "$PWD/backup:/backup" \
   --cap-drop=all \
   --user "$UID:$GID" \
-  ghcr.io/morten-olsen/github-backup
+  ghcr.io/morten-olsen/github-backup run
 ```
-_note: `--user` is not required, but recommended instead of running as root. Remember to give the user write access to the backup directory_
+_Note: `--user` is not required, but recommended instead of running as root. Remember to give the user write access to the backup directory_
 
-You can also limit which repositories to backup using the environment variabled `INCLUDE` and `EXCLUDE`, which supports a list or repos separated by `,` and with `*` as wildcard
+You can also limit which repositories to back up using the environment variables `INCLUDE` and `EXCLUDE`, which supports a list or repos separated by `,` and with `*` as wildcard
 
 ```
 -e INCLUDE="morten-olsen/*,morten-olsen-env/dotfiles" -e EXCLUDE="morten-olsen/something,*/test"

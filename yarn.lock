@@ -256,6 +256,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node-cron@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/node-cron@npm:3.0.0"
+  checksum: 24cf0cdb5aa93092c71e92474d69082ea392f28b2814876a5b6ef60c1a904da635e0d70158b622113dd2b013c909fe41951b5d8f699258b7950afb121256e3df
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:^16.4.0":
   version: 16.11.12
   resolution: "@types/node@npm:16.11.12"
@@ -527,6 +534,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:^8.3.0":
+  version: 8.3.0
+  resolution: "commander@npm:8.3.0"
+  checksum: 0f82321821fc27b83bd409510bb9deeebcfa799ff0bf5d102128b500b7af22872c0c92cb6a0ebc5a4cf19c6b550fba9cedfa7329d18c6442a625f851377bacf0
+  languageName: node
+  linkType: hard
+
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
@@ -685,11 +699,14 @@ __metadata:
     "@octokit/rest": ^18.7.0
     "@types/fs-extra": ^9.0.12
     "@types/node": ^16.4.0
+    "@types/node-cron": ^3.0.0
     "@types/rimraf": ^3.0.1
     "@vercel/ncc": ^0.29.0
+    commander: ^8.3.0
     dotenv: ^10.0.0
     fs-extra: ^10.0.0
     nanoid: ^3.1.23
+    node-cron: ^3.0.0
     ora: ^5.4.1
     rimraf: ^3.0.2
     simple-git: ^2.41.1
@@ -1031,6 +1048,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"moment-timezone@npm:^0.5.31":
+  version: 0.5.34
+  resolution: "moment-timezone@npm:0.5.34"
+  dependencies:
+    moment: ">= 2.9.0"
+  checksum: 12a1d3d52e4ba509cf1fa36bbda59d898a08fa80ab35f6c358747e93aec1f07e617cec647eaf2e8acf5f9132e581d4704d34a9edffa9a80c5cd04bf23b277595
+  languageName: node
+  linkType: hard
+
+"moment@npm:>= 2.9.0":
+  version: 2.29.1
+  resolution: "moment@npm:2.29.1"
+  checksum: 1e14d5f422a2687996be11dd2d50c8de3bd577c4a4ca79ba5d02c397242a933e5b941655de6c8cb90ac18f01cc4127e55b4a12ae3c527a6c0a274e455979345e
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.1.2":
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
@@ -1058,6 +1091,15 @@ __metadata:
   version: 0.6.2
   resolution: "negotiator@npm:0.6.2"
   checksum: dfddaff6c06792f1c4c3809e29a427b8daef8cd437c83b08dd51d7ee11bbd1c29d9512d66b801144d6c98e910ffd8723f2432e0cbf8b18d41d2a09599c975ab3
+  languageName: node
+  linkType: hard
+
+"node-cron@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "node-cron@npm:3.0.0"
+  dependencies:
+    moment-timezone: ^0.5.31
+  checksum: acae07d835f74636ec2bf598ffadf6b89aa2eae036671bffad336371b28fb1eefb11870912c965bb351cd958d4b62f9fa9b28cf922b5f681459ea4878837ffcf
   languageName: node
   linkType: hard
 

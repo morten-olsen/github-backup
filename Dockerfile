@@ -8,8 +8,9 @@ COPY . /app/
 RUN yarn bundle
 
 FROM node:alpine
-RUN apk update && apk add git
+COPY entry.sh /entry.sh
+RUN chmod 711 /entry.sh && apk update && apk add git
 COPY --from=BuildEnv /app/dist /app
-RUN ls /app
-CMD ["node", "/app/index.js"]
+CMD ["schedule"]
+ENTRYPOINT ["/entry.sh"]
 VOLUME /backup
